@@ -21,14 +21,14 @@ Also, Clang compilfer can be used in the terminal:
 
 
 
-- Build and run Example.cpp in VS2015 with the setting correctly:   
--- Properties/C C++/General/Additional include directory
----C:\llvm\tools\clang\include   
+1. Build and run Example.cpp in VS2015 with the setting correctly:   
+-Properties/C C++/General/Additional include directory  
+    C:\llvm\tools\clang\include  
     C:\build_Win64\tools\clang\include  
     C:\build_Win64\include  
     C:\llvm\include 
     
--- Properties/Linker/General/Additional library directory  
+-Properties/Linker/General/Additional library directory  
     C:\build_Win64\Release\lib
 
 
