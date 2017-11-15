@@ -22,8 +22,8 @@ Also, Clang compilfer can be used in the terminal:
 
 
 1. Build and run Example.cpp in VS2015 with the setting correctly:
-
-  a. Properties/C C++/General/Additional include directory
+</br>
+  a. Properties/C C++/General/Additional include directory
     C:\llvm\tools\clang\include
     C:\build_Win64\tools\clang\include
     C:\build_Win64\include
