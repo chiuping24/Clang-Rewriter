@@ -14,15 +14,15 @@ which is used in the following Rewriter.
 Also, Clang compilfer can be used in the terminal:
 >clang --version
 >>clang version 6.0.0 (trunk 316540)
-Target: x86_64-pc-windows-msvc
-Thread model: posix
-InstalledDir: C:\build_Win64\Release\bin
+>>Target: x86_64-pc-windows-msvc
+>>Thread model: posix
+>>InstalledDir: C:\build_Win64\Release\bin
 
 
 
 
-1. Build and run Example.cpp in VS2015
-  with the setting correctly:
+1. Build and run Example.cpp in VS2015 with the setting correctly:
+
   a. Properties/C C++/General/Additional include directory
     C:\llvm\tools\clang\include
     C:\build_Win64\tools\clang\include
@@ -31,6 +31,7 @@ InstalledDir: C:\build_Win64\Release\bin
     
   b. Properties/Linker/General/Additional library directory
     C:\build_Win64\Release\lib
+
 
 Reference:
 https://kevinaboos.wordpress.com/2013/07/23/clang-tutorial-part-ii-libtooling-example/
