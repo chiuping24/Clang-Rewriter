@@ -1,17 +1,18 @@
 # Clang_Rewriter
 Using LLVM Clang API to rewrite the program.
 
-#### I am using:
+##### I am using:
 1. Windows 10
 2. Visual studio 2015
 
-#### Installation guide: (Using visual studio)
+##### Installation guide: (Using visual studio)
 https://clang.llvm.org/get_started.html
 
 After the installation (CMake and build the VS solution), you will get several .h .lib ... Clang API
 which is used in the following Rewriter.
 
 ##### Also, Clang compilfer can be used in the terminal:
+1. using clang compiler: $ clang, windows bash shell: $clang.exe 
 ```
 $ clang --version  
 clang version 6.0.0 (trunk 316540)  
@@ -22,10 +23,13 @@ InstalledDir: C:\build_Win64\Release\bin
 $ clang test.cpp  
 $ ./a.exe  
 ```
+2. check clang AST:
+```
+$ clang -Xclang -ast-dump -fsyntax-only test.cpp   
+```
 
 
-
-#### Build and run Example.cpp in VS2015 with the setting correctly:   
+##### Build and run Example.cpp in VS2015 with the setting correctly:   
 1. Properties/C C++/General/Additional include directory  
     C:\llvm\tools\clang\include  
     C:\build_Win64\tools\clang\include  
@@ -45,6 +49,6 @@ output.cpp is the code which is generated after rewrite.
 
 
 
-#### Reference:
+##### Reference:
 https://kevinaboos.wordpress.com/2013/07/23/clang-tutorial-part-ii-libtooling-example/  
 (The comment of *Joshua* is also good for reference.)
