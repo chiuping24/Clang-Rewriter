@@ -47,4 +47,4 @@ output.cpp is the code which is generated after rewrite.
 
 #### Reference:
 https://kevinaboos.wordpress.com/2013/07/23/clang-tutorial-part-ii-libtooling-example/  
-(The comment of Joshua is also good for reference.)
+(The comment of *Joshua* is also good for reference.)
