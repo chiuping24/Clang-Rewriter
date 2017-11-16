@@ -37,8 +37,10 @@ $ ./a.exe  
       
 After successful building with VS, .exe file is computed.  
 Then you can rewrite the program (ex: test3.cpp) according to your design in Example.cpp  
-> Example.exe test3.cpp  
-  
+```
+$ Example.exe test3.cpp  
+```
+
 output.cpp is the code which is generated after rewrite.  
 
 
