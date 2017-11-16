@@ -12,7 +12,9 @@ After the installation (CMake and build the VS solution), you will get several .
 which is used in the following Rewriter.
 
 ##### Also, Clang compilfer can be used in the terminal:
-`$ clang --version`  
+`$ clang --version  
+he  
+ee`  
 `clang version 6.0.0 (trunk 316540)`  
 `Target: x86_64-pc-windows-msvc`  
 `Thread model: posix`  
