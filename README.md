@@ -17,6 +17,7 @@ which is used in the following Rewriter.
 >>Target: x86_64-pc-windows-msvc  
 >>Thread model: posix  
 >>InstalledDir: C:\build_Win64\Release\bin  
+  
 >clang test.cpp  
 >./a.exe
 
@@ -36,6 +37,7 @@ which is used in the following Rewriter.
 After successful building with VS, .exe file is computed.  
 Then you can rewrite the program (ex: test3.cpp) according to your design in Example.cpp  
 > Example.exe test3.cpp  
+  
 output.cpp is the code which is generated after rewrite.  
 
 
