@@ -2,9 +2,10 @@
 Using LLVM Clang API to rewrite the program with
 1. Windows 10
 2. Visual studio 2015
+3. [good reference](https://kevinaboos.wordpress.com/2013/07/23/clang-tutorial-part-ii-libtooling-example/) (and good comment  of *Joshua*) 
 
-##### Installation guide: (Using visual studio)
-https://clang.llvm.org/get_started.html
+##### LLVM Clang Installation (Using visual studio)
+[Installation guide](https://clang.llvm.org/get_started.html)  
 
 After the installation (CMake and build the VS solution), you will get several .h .lib ... Clang API  
 which is used in the following Rewriter.  
@@ -57,7 +58,3 @@ $ Example.exe test3.cpp
 output.cpp is the code which is generated after rewrite.  
 
 
-
-##### Reference:
-https://kevinaboos.wordpress.com/2013/07/23/clang-tutorial-part-ii-libtooling-example/  
-(The comment of *Joshua* is also good for reference.)
