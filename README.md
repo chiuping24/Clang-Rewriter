@@ -38,7 +38,8 @@ $ clang++ -std=c++11 -stdlib=libc++ test.cpp
 * [RecursiveASTVisitor](http://clang.llvm.org/doxygen/classclang_1_1RecursiveASTVisitor.html)  
 * How to write RecursiveASTVisitor based ASTFrontendActions? [(Clang official tutorial)](http://clang.llvm.org/docs/RAVFrontendAction.html)  
 * [Rewriter](http://clang.llvm.org/doxygen/classclang_1_1Rewriter.html)  
-* There are several replacements in Example.cpp such as function/variable/class name, function/variable/class call, class name of member function (Rectangle::set --> RectangleShape::set) and so on. Briefly example of rewriter in ASTVisitor for Rectangle::set --> RectangleShape::set
+* There are several replacements in Example.cpp such as function/variable/class name, function/variable/class call, class name of member function `(Rectangle::set --> RectangleShape::set)` and so on. Briefly example of rewriter in ASTVisitor for `Rectangle::set --> RectangleShape::set`
+
 ```C++
 class ExampleVisitor : public RecursiveASTVisitor<ExampleVisitor> {
 private:
