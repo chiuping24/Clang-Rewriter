@@ -62,16 +62,14 @@ public:
 
 #### Build and run Example.cpp in VS2015 with the setting correctly:   
 1. Properties/C C++/General/Additional include directory  
-```
     C:\llvm\tools\clang\include  
     C:\build_Win64\tools\clang\include  
     C:\build_Win64\include  
     C:\llvm\include 
-```    
+    
 2. Properties/Linker/General/Additional library directory  
-```
     C:\build_Win64\Release\lib
-```
+
 (There are some errors in VS building, such as unsigned -U issue. It works with removing "-".)
 After successful building with VS, .exe file is computed.  
 Then you can rewrite the program (ex: test3.cpp) according to your design in Example.cpp  
