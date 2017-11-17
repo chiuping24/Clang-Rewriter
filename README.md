@@ -32,12 +32,32 @@ $ clang -Xclang -ast-dump -fsyntax-only test.cpp
 $ clang++ -std=c++11 -stdlib=libc++ test.cpp
 ```
 #### Rewrite the program according to Example.cpp 
-* The Clang AST structure is important to know before rewrite. [Ref1](http://swtv.kaist.ac.kr/courses/cs453-fall13/Clang%20tutorial%20v4.pdf) [Ref2](https://llvm.org/devmtg/2013-04/klimek-slides.pdf)
+* The Clang AST structure is important to know before rewriting. [Ref1](http://swtv.kaist.ac.kr/courses/cs453-fall13/Clang%20tutorial%20v4.pdf) [Ref2](https://llvm.org/devmtg/2013-04/klimek-slides.pdf)
 * [ASTFrontendAction](http://clang.llvm.org/doxygen/classclang_1_1ASTFrontendAction.html)  
 * [ASTConsumer](http://clang.llvm.org/doxygen/classclang_1_1ASTConsumer.html)  
 * [RecursiveASTVisitor](http://clang.llvm.org/doxygen/classclang_1_1RecursiveASTVisitor.html)  
 * How to write RecursiveASTVisitor based ASTFrontendActions? [(Clang official tutorial)](http://clang.llvm.org/docs/RAVFrontendAction.html)  
-* [Rewriter](http://clang.llvm.org/doxygen/classclang_1_1Rewriter.html)
+* [Rewriter](http://clang.llvm.org/doxygen/classclang_1_1Rewriter.html)  
+* There are several replacements in Example.cpp such as function/variable/class name, function/variable/class call, class name of member function (Rectangle::set --> RectangleShape::set) and so on. Briefly example of rewriter in ASTVisitor for Rectangle::set --> RectangleShape::set
+```C++
+class ExampleVisitor : public RecursiveASTVisitor<ExampleVisitor> {
+private:
+    ASTContext *astContext; // used for getting additional AST info
+
+public:
+    explicit ExampleVisitor(CompilerInstance *CI) 
+      : astContext(&(CI->getASTContext())) // initialize private members
+    {
+        rewriter.setSourceMgr(astContext->getSourceManager(), astContext->getLangOpts());
+    }
+	bool VisitCXXMethodDecl(CXXMethodDecl *set) {
+		if (set->getQualifiedNameAsString() == "Rectangle::set_values") {
+			rewriter.ReplaceText(set->getQualifierLoc().getBeginLoc(), 9, "RectangleShape");
+		}
+		return true;
+	}
+};
+```
 
 #### Build and run Example.cpp in VS2015 with the setting correctly:   
 1. Properties/C C++/General/Additional include directory  
