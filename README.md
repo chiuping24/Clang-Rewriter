@@ -31,11 +31,11 @@ $ clang -Xclang -ast-dump -fsyntax-only test.cpp
 $ clang++ -std=c++11 -stdlib=libc++ test.cpp
 ```
 ##### Rewrite the program according to Example.cpp with Clang 
-[ASTFrontendAction](http://clang.llvm.org/doxygen/classclang_1_1ASTFrontendAction.html)  
-[ASTConsumer](http://clang.llvm.org/doxygen/classclang_1_1ASTConsumer.html)  
-[RecursiveASTVisitor](http://clang.llvm.org/doxygen/classclang_1_1RecursiveASTVisitor.html)  
-[(Clang official tutorial) How to write RecursiveASTVisitor based ASTFrontendActions.](http://clang.llvm.org/docs/RAVFrontendAction.html)  
-[Rewriter](http://clang.llvm.org/doxygen/classclang_1_1Rewriter.html)
+* [ASTFrontendAction](http://clang.llvm.org/doxygen/classclang_1_1ASTFrontendAction.html)  
+* [ASTConsumer](http://clang.llvm.org/doxygen/classclang_1_1ASTConsumer.html)  
+* [RecursiveASTVisitor](http://clang.llvm.org/doxygen/classclang_1_1RecursiveASTVisitor.html)  
+* How to write RecursiveASTVisitor based ASTFrontendActions? [(Clang official tutorial)](http://clang.llvm.org/docs/RAVFrontendAction.html)  
+* [Rewriter](http://clang.llvm.org/doxygen/classclang_1_1Rewriter.html)
 
 ##### Build and run Example.cpp in VS2015 with the setting correctly:   
 1. Properties/C C++/General/Additional include directory  
