@@ -12,7 +12,7 @@ which is used in the following Rewriter.
 
 
 #### Also, Clang compilfer can be used in the terminal:
-1. using clang compiler: $ clang, windows bash shell: $clang.exe 
+1. using clang compiler: $ clang, windows bash shell: $ clang.exe 
 ```
 $ clang --version  
 clang version 6.0.0 (trunk 316540)  
@@ -32,13 +32,13 @@ $ clang -Xclang -ast-dump -fsyntax-only test.cpp
 $ clang++ -std=c++11 -stdlib=libc++ test.cpp
 ```
 #### Rewrite the program according to Example.cpp 
-* The Clang AST structure is important to know before rewriting. [Ref1](http://swtv.kaist.ac.kr/courses/cs453-fall13/Clang%20tutorial%20v4.pdf) [Ref2](https://llvm.org/devmtg/2013-04/klimek-slides.pdf)
+* The Clang AST structure is important to know before rewriting. [(Ref1)](http://swtv.kaist.ac.kr/courses/cs453-fall13/Clang%20tutorial%20v4.pdf) [(Ref2)](https://llvm.org/devmtg/2013-04/klimek-slides.pdf)
 * [ASTFrontendAction](http://clang.llvm.org/doxygen/classclang_1_1ASTFrontendAction.html)  
 * [ASTConsumer](http://clang.llvm.org/doxygen/classclang_1_1ASTConsumer.html)  
 * [RecursiveASTVisitor](http://clang.llvm.org/doxygen/classclang_1_1RecursiveASTVisitor.html)  
 * How to write RecursiveASTVisitor based ASTFrontendActions? [(Clang official tutorial)](http://clang.llvm.org/docs/RAVFrontendAction.html)  
 * [Rewriter](http://clang.llvm.org/doxygen/classclang_1_1Rewriter.html)  
-* There are several replacements in Example.cpp such as function/variable/class name, function/variable/class call, class name of member function `(Rectangle::set --> RectangleShape::set)` and so on. Briefly example of rewriter in ASTVisitor for `Rectangle::set --> RectangleShape::set` :
+* There are several replacements in my Example.cpp such as function/variable/class name, function/variable/class call, class name of member function `(Rectangle::set --> RectangleShape::set)` and so on. Briefly example of rewriter in ASTVisitor for `Rectangle::set --> RectangleShape::set` :
 
 ```C++
 class ExampleVisitor : public RecursiveASTVisitor<ExampleVisitor> {
@@ -62,14 +62,16 @@ public:
 
 #### Build and run Example.cpp in VS2015 with the setting correctly:   
 1. Properties/C C++/General/Additional include directory  
+```
     C:\llvm\tools\clang\include  
     C:\build_Win64\tools\clang\include  
     C:\build_Win64\include  
     C:\llvm\include 
-    
+```    
 2. Properties/Linker/General/Additional library directory  
+```
     C:\build_Win64\Release\lib
-
+```
 (There are some errors in VS building, such as unsigned -U issue. It works with removing "-".)
 After successful building with VS, .exe file is computed.  
 Then you can rewrite the program (ex: test3.cpp) according to your design in Example.cpp  
