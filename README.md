@@ -8,7 +8,10 @@ Using LLVM Clang API to rewrite the program with
 [Installation guide](https://clang.llvm.org/get_started.html)  
 
 ```
-I build it from the souce code using visual studio. So I get the newest version Clang (non-full-released). In the next time, I suggest the [official pre-build binary](http://releases.llvm.org/download.html) for installation. It is much easiler and full support for other Clang Tools!!!
+I build it from the souce code using visual studio.  
+So I get the newest version Clang (non-full-released).  
+In the next time, I suggest the [official pre-build binary](http://releases.llvm.org/download.html) for installation.  
+It is much easiler and full support for other Clang Tools!!!  
 ```
 
 After the installation (CMake and build the VS solution), you will get several .h .lib ... Clang API  
