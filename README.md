@@ -87,4 +87,5 @@ $ Example.exe test3.cpp
 
 output.cpp is the code which is generated after rewrite.  
 
-
+#### Clang extra tool: clang-tidy 
+More information is described in the document [clang-tidy](https://github.com/chiuping24/Clang_Rewriter/tree/master/clang-tidy)
