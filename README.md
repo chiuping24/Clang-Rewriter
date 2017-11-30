@@ -6,11 +6,12 @@ Using LLVM Clang API to rewrite the program with
 
 #### LLVM Clang Installation (Using visual studio)
 [Installation guide](https://clang.llvm.org/get_started.html)  
+(Much better choice:)[official pre-build binary](http://releases.llvm.org/download.html)  
 
 ```
 I build it from the souce code using visual studio.  
 So I get the newest version Clang (non-full-released).  
-In the next time, I suggest the [official pre-build binary](http://releases.llvm.org/download.html) for installation.  
+In the next time, I suggest the [official pre-build binary] for installation.  
 It is much easiler and full support for other Clang Tools!!!  
 ```
 
