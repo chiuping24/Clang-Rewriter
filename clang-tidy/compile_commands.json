@@ -1,9 +1,0 @@
-[
-  {
-    "directory": "C:/Users/wttcpchang1/Documents/Visual Studio 2015/Projects/ClangTidyJSON/build",
-    "command": "clang-tool -fms-extensions -fms-compatibility -fms-compatibility-version=19  -isystem \"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include\"  -isystem \"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/atlmfc/include\"  -isystem \"C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt\"  -isystem \"C:/Program Files (x86)/Windows Kits/8.1/Include/um\"  -isystem \"C:/Program Files (x86)/Windows Kits/8.1/Include/shared\"  -isystem \"C:/Program Files (x86)/Windows Kits/8.1/Include/winrt\"  -D _MT  -D _DLL  -D NDEBUG  -D _CONSOLE  -D _UNICODE  -D UNICODE -std=c++14  \"c:/Users/wttcpchang1/Clang_Project/tidy/tt.cpp\"",
-    "file": "c:/Users/wttcpchang1/Clang_Project/tidy/tt.cpp"
-  }
-
-
-]
