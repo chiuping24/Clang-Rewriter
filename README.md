@@ -6,13 +6,12 @@ Using LLVM Clang API to rewrite the program with
 
 #### LLVM Clang Installation (Using visual studio)
 [Installation guide](https://clang.llvm.org/get_started.html)  
-(Much better choice:)[official pre-build binary](http://releases.llvm.org/download.html)  
+(Another choice for using Clang:)[official pre-build binary](http://releases.llvm.org/download.html)  But I can not found the overall lib that we need in Clang Rewriter API.
 
 ```
-I build it from the souce code using visual studio.  
-So I get the newest version Clang (non-full-released).  
-In the next time, I suggest the [official pre-build binary] for installation.  
-It is much easiler and full support for other Clang Tools!!!  
+I build it from the souce code using visual studio (with CMake).  
+So I get the newest version Clang 6.0.0 (non-full-released).  It may be too new to support all other Clang tools.
+
 ```
 
 After the installation (CMake and build the VS solution), you will get several .h .lib ... Clang API  
