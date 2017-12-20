@@ -39,7 +39,8 @@ usage: run-clang-tidy.py [-h] [-clang-tidy-binary PATH]
 ```
 
 #### Python
-If you don't have python installed in pc.
-You can just download the package (What I use is Python 3.5.2)
-https://www.python.org/downloads/release/python-352/
-Windows x86-64 embeddable zip file
+If you don't have python installed in pc.  
+You can just download the package (What I use is Python 3.5.2)  
+https://www.python.org/downloads/release/python-352/  
+Windows x86-64 embeddable zip file  
+
