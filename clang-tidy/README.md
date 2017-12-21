@@ -44,3 +44,21 @@ You can just download the package (What I use is Python 3.5.2)
 https://www.python.org/downloads/release/python-352/  
 Windows x86-64 embeddable zip file  
 
+
+將上述的Python包以及LLVM/Clang pre-built binaries包,放在對應批次檔的路徑  
+即可在使用者不需要安裝任何東西的情況下  
+對程式碼做重構  
+  
+
+#### Clang compilation database (compile_commands.json)
+It's the complete information to Clang compiler when looking at source files.  
+For windows user, you can download [Sourcetrail Extension](https://www.sourcetrail.com/blog/export_clang_compilation_database_from_visual_studio_solution/) to export compilation database with Visual Studio.
+
+#### Refactoring a project with easy icon: Refactoring.bat
+Here put a demo project with (compile_commands.json) which is includes:   
+Header.h  
+Source.cpp  
+src/Calc.cpp  
+src/domath.cpp
+  
+  
