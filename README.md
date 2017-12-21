@@ -10,7 +10,14 @@ Using LLVM Clang API to rewrite the program with
 
 ```
 I build it from the souce code using visual studio (with CMake).  
-So I get the newest version Clang 6.0.0 (non-full-released).  It may be too new to support all other Clang tools.
+So I get the newest version Clang 6.0.0 (non-full-released).  It may be too new to support all other Clang tools.  
+基本上安裝方法有二:  
+1. Build from source code, 可從 LLVM Download Page 中找到對應版本的source code,   
+   不用官網教學守則的svn, 因為這樣會拿到最新版但尚未release的版本,有些extra-tools 尚未支援  
+2. Pre-build binary 中下載就是已經build好的Clang 執行檔,可以直接使用Clang compiler和extra tools 像是Clang-tidy,  
+   但我在裡面找不到很多開發用的.lib, 像是使用Clang API做Rewriter就需要那些從Source code build出來的.lib  
+           -
+以上兩點, 可依照自己需要的功能做選擇   
 
 ```
 
