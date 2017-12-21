@@ -12,7 +12,8 @@ Using LLVM Clang API to rewrite the program with
 I build it from the souce code using visual studio (with CMake).  
 So I get the newest version Clang 6.0.0 (non-full-released).  
 It may be too new to support all other Clang tools.  
-基本上安裝方法有二:  
+  
+總結來說, 基本上LLVM/Clang安裝方法有二:  
 1. Build from source code, 可從 LLVM Download Page 中找到對應版本的source code,   
    不用官網教學守則的svn, 因為這樣會拿到最新版但尚未release的版本,有些extra-tools 尚未支援  
 2. Pre-build binary 中下載就是已經build好的Clang 執行檔,可以直接使用Clang compiler和extra tools 像是Clang-tidy,  
