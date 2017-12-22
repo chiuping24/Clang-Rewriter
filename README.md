@@ -85,6 +85,9 @@ public:
     
 2. Properties/Linker/General/Additional library directory  
     C:\build_Win64\Release\lib
+      
+3. Properties/Linker/input/Additional Dependencies  
+    all .lib (I don't know the exactly used lib, so I put all I have.)  
 
 (There are some errors in VS building, such as unsigned -U issue. It works with removing "-".)
 After successful building with VS, .exe file is computed.  
