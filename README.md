@@ -21,7 +21,8 @@ It may be too new to support all other Clang tools.  
            
 以上兩點, 可依照自己需要的功能做選擇  
 這邊使用 Clang Rewriter 所以選擇方法1. source code building  
-順帶一提,官網說Visual Studio支援 2013版本以上 ,但其實是需要對應的Clang版本, (若要使用VS2013 請選擇3.9.0以前的source code安裝)  
+順帶一提,官網說Visual Studio支援 2013版本以上 ,但其實是需要對應的Clang版本,  
+(若要使用VS2013 請選擇3.9.0以前的source code安裝)  
 
 ```
 
