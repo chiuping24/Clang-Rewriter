@@ -19,7 +19,9 @@ It may be too new to support all other Clang tools.  
 2. Pre-build binary 中下載就是已經build好的Clang 執行檔,可以直接使用Clang compiler和extra tools 像是Clang-tidy,  
    但我在裡面找不到很多開發用的.lib, 像是使用Clang API做Rewriter就需要那些從Source code build出來的.lib  
            
-以上兩點, 可依照自己需要的功能做選擇   
+以上兩點, 可依照自己需要的功能做選擇  
+這邊使用 Clang Rewriter 所以選擇方法1. source code building  
+順帶一提,官網說Visual Studio支援 2013版本以上 ,但其實是需要對應的Clang版本, (若要使用VS2013 請選擇3.9.0以前的source code安裝)  
 
 ```
 
