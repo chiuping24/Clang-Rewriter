@@ -50,21 +50,13 @@ private:
 	Rewriter rewriter; //
 public:
 	
-	//Rewriter rewriter;
-	//ASTContext &mContext;
-	//std::set<FileID> mRewrittenFileIDs;
-	//void markFileForCurrentDecl(Decl *d);
-	//string file;
-	//Rewriter rewriter;
 	//ExampleVisitor(Rewriter &R, ASTContext &astContext)
 	//	: rewriter(R), mContext(astContext) {} //
 	explicit ExampleVisitor(CompilerInstance *CI)
 		: astContext(&(CI->getASTContext())) // initialize private members
 	{
-		//errs() << "nFile~~~~~~~~~~~" << nFile;
 		rewriter.setSourceMgr(astContext->getSourceManager(), astContext->getLangOpts());
 	}
-	//FileID fileID = astContext->getSourceManager().getMainFileID();
 	
 	int nRewrite = 0;
 	int ismain = 0;
@@ -80,18 +72,6 @@ public:
 		if (funcName == "main") {
 			ismain = 1;
 		}
-		//if (inFile == 1) {
-			//errs() << "ismain: "<< ismain<<", Found " << numFunctions << " functions.\n\n";
-			//errs() << "=====??====fileID: " << fileID.getHashValue() <<", fun name:"<< funcName <<"\n";
-			//rewriter.getEditBuffer(rewriter.getSourceMgr().getMainFileID()).write(errs());
-			//system("PAUSE");
-		//}
-		/*if (funcName == "do_math" && inFile == 1) {
-			rewriter.ReplaceText(func->getLocation(), funcName.length(), "add5");
-			RewriteBufMap[nFile] = rewriter.getRewriteBufferFor(rewriter.getSourceMgr().getMainFileID());
-			nRewrite++;
-			//errs() << "** Rewrote function def: " << funcName << "\n";
-		}*/
 		return true;
 	}
 	int isfor = 0;
@@ -103,21 +83,10 @@ public:
 		if (ForStmt *ret = dyn_cast<ForStmt>(st)) {
 			isview += 1;
 			isfor = isview;
-			//errs() << "isfor: " << isfor << "\n";
-			//rewriter.ReplaceText(ret->getLocStart(), 0, "000");
 		}
 		return true;
 	}
 
-	/*bool VisitVarDecl(VarDecl *var) {
-		//errs() << "VVVVVV!!!!: " << var->getType().getAsString()<< "\n";
-		if ((var->getCanonicalDecl())->getNameAsString() == "val" && inFile == 1) {
-			rewriter.ReplaceText((var->getLocation()), 3, "value");
-			RewriteBufMap[nFile] = rewriter.getRewriteBufferFor(rewriter.getSourceMgr().getMainFileID());
-			nRewrite++;
-		}
-		return true;
-	}*/
 	vector <string> st_DeclRefExpr;
 	vector <string> st_DeclRefExpr_type;
 	int isfab = 0;
@@ -132,29 +101,16 @@ public:
 		if (FullLocation.isValid())
 
 		{
-			/*if ((sta->getFoundDecl())->getNameAsString() == "do_math" && inFile == 1) {
-				rewriter.ReplaceText(sta->getLocStart(), 7, "add5");
-				RewriteBufMap[nFile] = rewriter.getRewriteBufferFor(rewriter.getSourceMgr().getMainFileID());
-
-
-				nRewrite++;
-			}
-			if ((sta->getFoundDecl())->getNameAsString() == "val" && inFile == 1) {
-				rewriter.ReplaceText(sta->getLocStart(), 3, "value");
-				RewriteBufMap[nFile] = rewriter.getRewriteBufferFor(rewriter.getSourceMgr().getMainFileID());
-
-				nRewrite++;
-			}*/
 			nView += 1;
 			nDeclRefExpr += 1;
-			//if (ismain ==1) { errs() << "DeclRefExpr! nView: " << nView << "==="<< (sta->getFoundDecl())->getNameAsString() <<"\n"; }
+
 			st_DeclRefExpr.push_back((sta->getFoundDecl())->getNameAsString());
 			st_DeclRefExpr_type.push_back(sta->getType().getAsString());
 			//errs() << "DeclRefExpr: " << (sta->getFoundDecl())->getNameAsString() << ", " << st_DeclRefExpr[nDeclRefExpr - 1] << "\n";
 			if ((sta->getFoundDecl())->getNameAsString() == "fabs" && inFile == 1) {
 				//errs() << "@@@ fabs type=" << sta->getType().getAsString()<<"=\n";
-				if (sta->getType().getAsString() == "long double (long double) noexcept") {
-					//errs() << "@@@ fabs type=" << sta->getType().getAsString()<<"=\n";
+				//if (sta->getType().getAsString() == "long double (long double) noexcept") {
+				if (sta->getType().getAsString().substr(0, 25) == "long double (long double)") {
 					islongdouble = 1;
 				}
 				else {
@@ -169,67 +125,14 @@ public:
 			}
 
 			if (nDeclRefExpr == isfab + 2 && isfab != 0 && islongdouble == 1) {
-				//errs() << nView << " =nView \n";
-				//if (sta->getType().getAsString() == "long double") { errs() << st_DeclRefExpr[nDeclRefExpr-1]+")" <<"\n"; }
 				nRewrite++;
 				rewriter.ReplaceText(sta->getLocStart(), st_DeclRefExpr[nDeclRefExpr - 1].size(), st_DeclRefExpr[nDeclRefExpr - 1] + ")"); // "glBND_yn_limit)"
 				//rewriter.getEditBuffer(rewriter.getSourceMgr().getMainFileID()).write(errs());
-
 				RewriteBufMap[nFile] = rewriter.getRewriteBufferFor(rewriter.getSourceMgr().getMainFileID());
 			}
 		}
 		return true;
 	}
-	/*bool VisitReturnStmt(ReturnStmt *re) {
-		//if (nRewrite > 0) { errs() << "returnStmt\n"; }
-		//system("PAUSE");
-		//rewriter.getEditBuffer(rewriter.getSourceMgr().getMainFileID()).write(errs());
-		//errs() << "path: " << std::string("output/" + filename) << "\n";
-		//errs() << "!!\n";
-		if (nRewrite > 0 && ismain ==1) {
-			ofstream output(std::string("output/" + filename));
-			//errs()  << "ismain: "<<ismain <<", "<< rewriter.getRangeSize() << "\n";
-			const RewriteBuffer *RewriteBuf = rewriter.getRewriteBufferFor(rewriter.getSourceMgr().getMainFileID());
-			output << string(RewriteBuf->begin(), RewriteBuf->end());
-			output.close();
-			errs() << "save the rewrite program in path: " << std::string("output/" + filename) << "\n";
-		}
-		return true;
-	}*/
-	/*bool VisitFloatingLiteral(FloatingLiteral *b) {
-	nView += 1;
-	if (ismain == 1) {
-	errs() << "FloatingLiteral! n: " << nView << "\n";
-	}
-	return true;
-	} */
-	/*bool VisitCXXConstructorDecl(CXXConstructorDecl *c) {//!!!????
-	//errs() << "=========!!!!" << "\n";
-	//if (cl->getNameAsString() == "Rectangle") {
-	//rewriter.ReplaceText(cl->getLocation(), 9, "RectangleShape");
-	//}
-	//return true;
-	//}*/
-	//bool VisitParmVarDecl(ParmVarDecl *par) {
-	//errs() << "VVVVVV!!!!: " << par->getDeclName() << "\n";
-	//if (par->getType().getAsString() == "class Rectangle *") {
-	//	rewriter.ReplaceText(par->getLocation(), 1, "HHH");
-	//}
-	//return true;
-	//}
-	/*
-	virtual bool VisitReturnStmt(ReturnStmt *ret) {
-	rewriter.ReplaceText(ret->getRetValue()->getLocStart(), 6, "val");
-	errs() << "** Rewrote ReturnStmt\n";
-	return true;
-	}
-
-	virtual bool VisitCallExpr(CallExpr *call) {
-	rewriter.ReplaceText(call->getLocStart(), 7, "add5");
-	errs() << "** Rewrote function call\n";
-	return true;
-	}
-	*/
 };
 
 
@@ -244,8 +147,6 @@ public:
 		: visitor(new ExampleVisitor(CI)) // initialize the visitor
 	{
 		nFile++;
-		//errs() << "~~~~~~nFile:" << nFile<<"\n";
-
 	}
 	//ExampleASTConsumer(Rewriter &rewriter, ASTContext &astContext)
 		//: visitor(rewriter, astContext) {}
@@ -270,42 +171,6 @@ public:
 int main(int argc, const char **argv) {
 	std::string fileName(argv[argc - 1]);
 	//errs() << "==argv[argc-1]: " << argv[argc - 1];
-	/*CompilerInstance compiler;
-	compiler.createFileManager();
-	compiler.createSourceManager(compiler.getFileManager());
-	//HeaderSearchOptions &headerSearchOptions = compiler.getHeaderSearchOpts();
-	//AddPlatformSpecificHeaders(headerSearchOptions);
-	compiler.createASTContext();
-	// Initialize rewriter
-	Rewriter rewriter;
-	clang::SourceManager &sourceManager = compiler.getSourceManager();
-	rewriter.setSourceMgr(sourceManager, compiler.getLangOpts());
-	const FileEntry *pFile = compiler.getFileManager().getFile(fileName);
-	sourceManager.setMainFileID(
-		sourceManager.createFileID(pFile, clang::SourceLocation(),
-			clang::SrcMgr::C_User));
-	compiler.getDiagnosticClient().BeginSourceFile(compiler.getLangOpts(),
-		&compiler.getPreprocessor());
-
-	ASTContext &astContext = compiler.getASTContext();
-	ExampleASTConsumer astConsumer(&compiler);
-	*/
-	/*for (FileID currFileID : astConsumer->visitor.mRewrittenFileIDs)
-	{
-		const clang::FileEntry *fileEntry = sourceManager.getFileEntryForID(currFileID);
-		if (!fileEntry) {
-			errs() << "OOPS, failed to find the file entry for fileID\n";
-			continue;
-		}
-
-		//const string fname = fileEntry->getName();
-		std::string sFname = fileEntry->getName();
-		//if (shouldIgnorePath(sFname)) {
-		//	continue;
-		//}
-		dumpRewrittenCodeForFile(currFileID, sFname, rewriter);
-	}*/
-
 
 	//Rewriter rewriter;
 	llvm::cl::OptionCategory optionCategory("tool options");
@@ -315,14 +180,8 @@ int main(int argc, const char **argv) {
 	CommonOptionsParser op(argc, argv, optionCategory);
 	// create a new Clang Tool instance (a LibTooling environment)
 	ClangTool Tool(op.getCompilations(), op.getSourcePathList());
-	//errs() << "sourcePathList0: "<< op.getSourcePathList()[0];
-	//errs() << "sourcePathList1: " << op.getSourcePathList()[1];
-	//errs() << "sourcePathList2: " << op.getSourcePathList()[2];
-	//errs() << "sourcePathList3: " << op.getSourcePathList()[3];
 
 	int result = Tool.run(newFrontendActionFactory<ExampleFrontendAction>().get());
-	//errs() << "\nFound " << numFunctions << " functions. =======================\n\n";
-	//errs() << "0000000000000000 size:"<< RewriteBufMap.size();
 	//ofstream outputNoRewrite(std::string("NoRewriteFile.txt"));
 	string filepath2 = "RewriteOutput/"; _mkdir(filepath2.c_str());
 	ofstream outputRewrite(std::string("RewriteOutput/RewriteFile.txt"));
@@ -360,14 +219,7 @@ int main(int argc, const char **argv) {
 				_mkdir(filepath2.c_str());
 			}
 			//string filepath2 = std::string("output/" + filepath);
-			/*(if (pathN > 0){// filepath = filename[0]~filename[position[pathN-1]]
-				//errs() << "\n pathN >0 !!!!! ";
-				for (int j = 0; j <= position[pathN - 1]; ++j) { 
-					errs() << "\n filename[j]:" << filename[j];
-					filepath[j] = filename[j]; errs() <<"\n!!!"<< filepath[j] << "\n";
-				}
-				filepath2 = std::string("output/" + filepath);
-			}*/
+
 			if (pathN == 0) { string filepath2 = "RewriteOutput/"; _mkdir(filepath2.c_str());
 				BackUpPath = "BackUp/";
 			}
