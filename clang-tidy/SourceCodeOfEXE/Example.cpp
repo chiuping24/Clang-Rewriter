@@ -201,12 +201,13 @@ int main(int argc, const char **argv) {
 			// a = "a";
 			int pathN = 0; //      src/src/x.cpp -> pathN=2 
 			vector<int> position; // position of '/' in path
-			for (int i = 0; i < filename.size(); ++i) {
+			for (int f = 0; f < filename.size(); ++f) {
 				//errs() << filename[i] << "\n";
 				string dash = "\\";
 				string dash2 = "/";
 				//errs() << "\n dash0000000"<<dash[0]<<" =====filename[i] "<<filename[i];
-				if (filename[i] == dash[0] || filename[i] == dash2[0]) { position.push_back(i); pathN++; //errs() << "\n !!!!!!!!!!pathN" << pathN; 
+				if (filename[f] == dash[0] || filename[f] == dash2[0]) { 
+					position.push_back(f); pathN++; //errs() << "\n !!!!!!!!!!pathN" << pathN; 
 				}
 			}
 			//const int n = position[pathN - 1];
