@@ -78,6 +78,8 @@ public:
 	}
 };
 ```
+  
+* The AST naming (ex: expression type) may be different in different pc (visual studio environment). It's because When Clang compiles C++ code for Windows, it attempts to be compatible with MSVC. [(ref)](https://clang.llvm.org/docs/MSVCCompatibility.html) 
 
 #### Build and run Example.cpp in VS2015 with the setting correctly:   
 1. Properties/C C++/General/Additional include directory  
@@ -96,7 +98,7 @@ public:
 After successful building with VS, .exe file is computed.  
 Then you can rewrite the program (ex: test3.cpp) according to your design in Example.cpp  
 ```
-$ Example.exe test3.cpp  
+$ ExampleRewriter.exe test3.cpp -- 
 ```
 
 output.cpp is the code which is generated after rewrite.  
