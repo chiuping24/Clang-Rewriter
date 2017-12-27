@@ -1,10 +1,15 @@
 echo Using Clang Tools to Refactoring the project > output.log
 
-set PATH=%PATH%;C:\Windows\System32;LLVM\bin
+set PATH=C:\Windows\System32;Include\python3_5_2_zip;Include\LLVM\bin;
 
 echo Hello, there are some functions with this tool: 1. Rewrite the program 2. Clang-tidy checks with C++ STL without fixing 3. with fixing 
 
 RewriteFileList.exe >> output.log
+for /f "delims=" %%z in (BackUpdoclist.txt) do ( 
+   set listBU=%%z
+)
+%listBU% >> output.log
+
 for /f "delims=" %%a in (Rewritefilelist.txt) do ( 
    set list=%%a
 )
@@ -20,7 +25,8 @@ if %option1%==y (
    ClangExample.exe %list% >> output.log
 )
 
-move Rewritefilelist.txt RewriteOutput\ >> output.log
+move Rewritefilelist.txt BackUp\ >> output.log
+move BackUpdoclist.txt BackUp\ >> output.log
 
 for /f "delims=" %%b in (RewriteOutput\RewriteFileCopy.txt) do (
    set backuplist=%%b
