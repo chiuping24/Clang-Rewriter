@@ -197,14 +197,12 @@ int main(int argc, const char **argv) {
 		if (RewriteBufMap[i] != NULL) {
 			//errs() << string(RewriteBufMap[i]->begin(), RewriteBufMap[i]->end());
 			string filename = op.getSourcePathList()[i - 1];
-			//errs() << "\nfile: " << filename<<"\n";
-			// a = "a";
+			string dash = "\\";
+			string dash2 = "/";
+
 			int pathN = 0; //      src/src/x.cpp -> pathN=2 
 			vector<int> position; // position of '/' in path
 			for (int f = 0; f < filename.size(); ++f) {
-				//errs() << filename[i] << "\n";
-				string dash = "\\";
-				string dash2 = "/";
 				//errs() << "\n dash0000000"<<dash[0]<<" =====filename[i] "<<filename[i];
 				if (filename[f] == dash[0] || filename[f] == dash2[0]) { 
 					position.push_back(f); pathN++; //errs() << "\n !!!!!!!!!!pathN" << pathN; 
@@ -217,11 +215,18 @@ int main(int argc, const char **argv) {
 				string filepath2 = std::string("RewriteOutput/" + filepath);
 				BackUpPath = std::string("BackUp/" + filepath);
 				//errs() << "\n~~~~filepath:   " << filepath2 << "\n";
-				_mkdir(filepath2.c_str());
+				for (int k = 0; k < filepath2.size(); ++k){
+					if (filepath2[k] == dash[0] || filepath2[k] == dash2[0]) {
+						//errs() << "mkdir path: " << filepath2.substr(0, k) << "\n"; 
+						_mkdir(filepath2.substr(0, k).c_str());
+					}
+				}
+				//_mkdir(filepath2.c_str());
 			}
 			//string filepath2 = std::string("output/" + filepath);
 
-			if (pathN == 0) { string filepath2 = "RewriteOutput/"; _mkdir(filepath2.c_str());
+			if (pathN == 0) { 
+				//string filepath2 = "RewriteOutput/"; _mkdir(filepath2.c_str());
 				BackUpPath = "BackUp/";
 			}
 			//errs() << "\n~~~~BackUp path:   " << BackUpPath << "\n";
