@@ -22,7 +22,7 @@ if %option1%==y (
    ::y
    clang --version >>output.log 
 
-   ClangExample.exe %list% >> output.log
+   ClangRewriter.exe %list% >> output.log
 )
 
 move Rewritefilelist.txt BackUp\ >> output.log
