@@ -52,7 +52,9 @@ Windows x86-64 embeddable zip file
 
 #### Clang compilation database (compile_commands.json)
 It's the complete information to Clang compiler when looking at source files.  
-For windows user, you can download [Sourcetrail Extension](https://www.sourcetrail.com/blog/export_clang_compilation_database_from_visual_studio_solution/) to export compilation database with Visual Studio.
+For windows user, you can download [Sourcetrail Extension](https://www.sourcetrail.com/blog/export_clang_compilation_database_from_visual_studio_solution/) to export compilation database with Visual Studio.  
+Sourcetrail extension setting in VS: Sourcetrail extension -> Create cimpulation database -> ...., Clang Options:-fms-compatibility  
+It is important to key-in -fms-compatibility for Clang Options, it is used to rewrite some VS project with VS library/header (ex: MFC) for Microsoft compatibility with Clang.
 
 #### Refactoring a project with easy button: Refactoring.bat
 Here put a demo project with (compile_commands.json) which is includes:   
