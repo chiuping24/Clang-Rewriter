@@ -11,7 +11,7 @@ int main(void) {
 	//ofstream outputNoRewrite(std::string("NoRewriteFile.txt"));
 	ifstream fin("compile_commands.json", ios::in);
 	ofstream fout("Rewritefilelist.txt", ios::out);
-	ofstream fout2("BackUpdoclist.txt", ios::out);
+	//ofstream fout2("BackUpdoclist.txt", ios::out);
 	string readStr;
 	string readStr2;
 	string pattern = "\"";
@@ -67,7 +67,7 @@ int main(void) {
 		//cout << "correlated path: " << path2[i]<<endl;
 	}
 	fout.close();
-	fout2 << "mkdir BackUp";
+	//fout2 << "mkdir BackUp";
 	// mkdir BackUp folder according to project folder 
 	for (int j = 0; j < path2.size(); ++j) {
 		string dash = "/";
@@ -81,18 +81,35 @@ int main(void) {
 			}
 		}
 		//const int n = position[pathN - 1];
+		
+		int isSame = 0;
+		for (int q = 0; q < j; ++q){
+			if (path2[j].substr(0, position[pathN - 1] + 1) == path2[q].substr(0, position[pathN - 1] + 1)){ isSame = 1; }
+		}
+
+		
 		if (pathN > 0) {
 			string filepath = path2[j].substr(0, position[pathN - 1] + 1);
 			string filepath2 = std::string("BackUp/" + filepath);
+
 			for (int k = 0; k < filepath2.size(); ++k){
 				if (filepath2[k] == dash[0]){ filepath2[k] = dash2[0]; }
 			}
+			
+			for (int k = 0; k < filepath2.size(); ++k)
+			{
+				if (filepath2[k] == dash[0] || filepath2[k] == dash2[0])
+				{
+					if (isSame != 1) { cout << "mkdir path: " << filepath2.substr(0, k) << endl;}
+					if (isSame != 1) { _mkdir(filepath2.substr(0, k).c_str()); }
+				}
+			}
 			//cout << "madir: " << filepath2.c_str()<<endl;
-			fout2 << " && mkdir " << filepath2.c_str();
+			//fout2 << " && mkdir " << filepath2.c_str();
 			//_mkdir(filepath2.c_str());
 		}
 		//if (pathN == 0) { string filepath2 = "BackUp/"; _mkdir(filepath2.c_str()); }
 	}
-	fout2.close();
+	//fout2.close();
 	return 0;
 }
