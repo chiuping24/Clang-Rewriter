@@ -6,7 +6,7 @@ Clang-tidy is used to perform various code transformations and fixes like modern
 #### LLVM/Clang/clang-extra-tools installation
 First of all, LLVM/Clang need to be installed.  
 Please install it from [pre-built binaries](http://releases.llvm.org/download.html).  
-The suggestion is don't install from source code building by yourself, the newest version of Clang will be produced. It may be not full-released. And it's difficult to get (another build ?) the clang extra tools such as clang-tidy...  
+If you install Clang from source code building by yourself, please notice which version of source code. According the guideline method of `svn co ...`, the newest version of Clang will be produced. It may be not full-released. And it's difficult to get (another build ?) the clang extra tools such as clang-tidy...  
 ```
 $ clang --version  
 clang version 5.0.0 (tags/RELEASE_500/final)  
