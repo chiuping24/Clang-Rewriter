@@ -6,12 +6,13 @@ Using LLVM Clang API to rewrite the program with
 
 #### LLVM Clang Installation (Using visual studio)
 [Installation guide](https://clang.llvm.org/get_started.html)  
-(Another choice for using Clang:)[official pre-build binary](http://releases.llvm.org/download.html)  But I can not found the overall lib that we need in Clang Rewriter API.
+(Another choice for using Clang:)[official binary](http://releases.llvm.org/download.html)    
+Using pre-build binary may be not found the overall lib that we need in Clang Rewriter API. The suggestion for using API is download the released source code and build it by yourself.
 
 ```
-I build it from the souce code using visual studio (with CMake).  
+I build it from the souce code (by svn co..) using visual studio (with CMake).  
 So I get the newest version Clang 6.0.0 (non-full-released).  
-It may be too new to support all other Clang tools.  
+It may be too new to support all other Clang tools, ex:clang-tidy.  
   
 總結來說, 基本上LLVM/Clang安裝方法有二:  
 1. Build from source code, 可從 LLVM Download Page 中找到對應版本的source code,   
@@ -20,7 +21,7 @@ It may be too new to support all other Clang tools.  
    但我在裡面找不到很多開發用的.lib, 像是使用Clang API做Rewriter就需要那些從Source code build出來的.lib  
            
 以上兩點, 可依照自己需要的功能做選擇  
-這邊使用 Clang Rewriter 所以選擇方法1. source code building  
+這邊使用 Clang Rewriter 所以選擇方法1. source code building      
 順帶一提,官網說Visual Studio支援 2013版本以上 ,但其實是需要對應的Clang版本,  
 (若要使用VS2013 請選擇3.9.0以前的source code安裝)  
 
