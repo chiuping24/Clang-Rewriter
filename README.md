@@ -1,4 +1,4 @@
-# Clang_Rewriter
+# Clang-Rewriter
 Using LLVM Clang API to rewrite the program with
 1. Windows 10
 2. Visual studio 2015
